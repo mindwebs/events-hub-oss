@@ -1,0 +1,43 @@
+<div *ngIf = "apicall">
+    <app-loader></app-loader>
+</div>
+<img class="wave" src="assets/img/waves/1.png">
+<div class="container">
+    <div class="img">
+        <img src="assets/img/Asset 4.svg">
+    </div>
+    <div class="login-content">
+        <form>
+            <img src="assets/img/avatar.svg">
+            <h2 class="py-2 title">WELCOME</h2>
+            <div class="input-div one {{ufocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-user"></i>
+                    <!-- <fa-icon [icon]="faCoffee"></fa-icon> -->
+                </div>
+                <div class="div">
+                    <h5>Email</h5>
+                    <input (focus)="ufocus='focus'" type="email" name="email" [(ngModel)]="email" class="input">
+                </div>
+            </div>
+            <div class="input-div pass {{pfocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>Password</h5>
+                    <input (focus)="pfocus='focus'" type="password" name="password" [(ngModel)]="password" class="input">
+                </div>
+            </div>
+            <div class="input" style="text-align: left; padding-left: 5px; margin-bottom: 10px;">
+                <input type="checkbox" id="rememberme" name="rememberme" [(ngModel)]="rememberme"> &nbsp;
+                <label for="rememberme"> Remember Me</label><br>
+            </div>
+            <div class="link-box">
+                <a class="a-left" [routerLink]="['/register']">New User? Register</a>
+                <a class="a-right" [routerLink]="['/forget-password']">Forgot Password?</a>
+            </div>
+            <input type="submit" (click) = "loginUser()" class="btn" value="Login">
+        </form>
+    </div>
+</div>

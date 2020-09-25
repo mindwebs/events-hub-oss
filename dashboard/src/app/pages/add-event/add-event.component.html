@@ -1,0 +1,161 @@
+<div *ngIf = "apicall">
+    <app-loader></app-loader>
+</div>
+<div class="any" *ngIf = "!apicall">
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Add Event</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a [routerLink]="['']">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="['/events']">Events</a></li>
+                    <li class="breadcrumb-item active">Add Events</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row main">
+            <div class="col-md-12 col-12 pb-3">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title"><span class="fa fa-plus"></span> Add an Event</h3>
+                    </div>
+                    <form role="form">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="name">Event Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="Event Name" [(ngModel)] = "eventName"  required>
+                            </div>
+                            <div class="form-group">
+                                <label for="host">Event Hosted By</label>
+                                <input type="text" class="form-control" name="host" placeholder="Event Host" [(ngModel)] = "host" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="about">About Event</label>
+                                <input type="text" class="form-control" name="about"
+                                    placeholder="Event Short Description" maxlength="60" [(ngModel)] = "about" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Event Description</label>
+                                <!-- USE CKEDITOR HERE -->
+                                <textarea name="description" class="form-control" id="description" rows="5"
+                                    placeholder="Write the Event Description" [(ngModel)] = "description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="event_dates">Event Dates : {{startdate}}</label>
+                                <div class="row">
+                                    <div class="col-md-4 col-8">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="far fa-calendar-alt"></i>
+                                                </span>
+                                            </div>
+
+                                            <input type="text" class="form-control float-right"
+                                                name="event_dates" daterangepicker [options]="options"
+                                                (selected)="selectedDate($event, daterange)" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-4">
+                                    </div>
+                                    <div class="col-md-3 col-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-clock"></i>&nbsp;&nbsp;Start
+                                                </span>
+                                            </div>
+                                            <input name="start_time" class="form-control float-right" atp-time-picker
+                                                value="11:00" [(ngModel)] = "starttime"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-clock"></i>&nbsp;&nbsp;End
+                                                </span>
+                                            </div>
+                                            <input name="end_time" class="form-control float-right" atp-time-picker
+                                                value="17:00" [(ngModel)] = "endtime"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- /.input group -->
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="end_date">Tickets End Date</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="end_date" name="end_date"
+                                        placeholder="dd/mm/yyyy" [mask]="'d0/M0/0000'" [specialCharacters]="['/']">
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <label for="back_img">Background Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" (change)="pickedImage($event,1)" class="custom-file-input" id="back_img" accept="image/*">
+                                        <label class="custom-file-label" for="back_img" *ngIf = "!bgflag">Choose file</label>
+                                        <label class="custom-file-label" for="back_img" *ngIf = "bgflag">{{bgfile}}</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="">Upload</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="event_img">Event Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" (change)="pickedImage($event,2)" class="custom-file-input" id="event_img" accept="image/*">
+                                        <label class="custom-file-label" for="event_img" *ngIf = "!eventflag">Choose file</label>
+                                        <label class="custom-file-label" for="event_img" *ngIf = "eventflag">{{eventfile}}</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="">Upload</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="video_link">Background Video Link (if any)</label>
+                                <input type="text" class="form-control" name="video_link"
+                                    placeholder="Youtube Video Link" [(ngModel)] = "videolink">
+                            </div>
+                            <div class="form-group">
+                                <label for="location" style="padding-right: 10px;">Location:</label>
+                                <select [(ngModel)]="location" name="loc">
+                                    <option *ngFor="let location of locationList" [ngValue]="location">
+                                      {{location}}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary" (click) = "createEvent()">Create New Event</button>
+                            &nbsp;&nbsp;
+                            <button type="reset" class="btn btn-danger" (click)="goBack()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>

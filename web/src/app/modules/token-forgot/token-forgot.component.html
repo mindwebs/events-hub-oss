@@ -1,0 +1,43 @@
+<img class="wave" src="assets/img/waves/2.png">
+<div class="container">
+    <div class="img">
+        <img src="assets/img/bg.svg">
+    </div>
+    <div class="login-content" *ngIf = "validtok">
+        <form action="index.html">
+            <h2 class="pb-3 title">Forgot Password</h2>
+
+            <div class="input-div two {{ufocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>Enter New Password</h5>
+                    <input (focus)="ufocus='focus'" [(ngModel)] = "password" name="password"  type="password" class="input">
+                </div>
+            </div>
+            <div class="input-div two {{u2focus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>Confirm New Password</h5>
+                    <input (focus)="u2focus='focus'" [(ngModel)] = "confirmpassword" name="confirmpass" type="password" class="input">
+                </div>
+            </div>
+
+            <div class="link-box">
+                <a class="a-right" href="#">Already Have an Account? Login</a>
+            </div>
+            <input type="submit" class="btn" (click)= "resetPassword()" value="Request Password Reset">
+        </form>
+    </div>
+    <div class="login-content" *ngIf = "!validtok">
+        <form action="index.html">
+            <h2 class="pb-3 title">Invalid Link</h2>
+            <div class="link-box">
+                <a class="a-right" href="#">Already Have an Account? Login</a>
+            </div>
+        </form>
+    </div>
+</div>

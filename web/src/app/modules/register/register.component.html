@@ -1,0 +1,104 @@
+<div *ngIf = "apicall">
+    <app-loader></app-loader>
+</div>
+<img class="wave" src="assets/img/waves/2.png">
+<div class="container">
+    <div class="img">
+        <img src="assets/img/Asset 4.svg">
+    </div>
+    <div class="login-content" *ngIf = "otpchecked && otpsent">
+        <form>
+            <h2 class="pb-3 title">Get Started</h2>
+            <div class="input-div one {{nfocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-id-badge"></i>
+                </div>
+                <div class="div">
+                    <h5>Name</h5>
+                    <input (focus)="nfocus='focus'" type="text" class="input" [(ngModel)]="name" name="name">
+                </div>
+            </div>
+            <div class="input-div one {{afocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-mobile"></i>
+                </div>
+                <div class="div">
+                    <h5>Mobile</h5>
+                    <input (focus)="afocus='focus'" type="text" class="input" [(ngModel)]="mobile" name="Mobile">
+                </div>
+            </div>
+            <div class="input-div three {{pfocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-unlock-alt"></i>
+                </div>
+                <div class="div">
+                    <h5>Set Password</h5>
+                    <input (focus)="pfocus='focus'" type="password" class="input" [(ngModel)]="password" name="password">
+                </div>
+            </div>
+            <div class="input-div four {{cfocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>Confirm Password</h5>
+                    <input (focus)="cfocus='focus'" type="password" class="input" [(ngModel)]="confirmpassword" name="confirmpassword">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <i style="color: #d9d9d9;" class="fa fa-2x fa-location-arrow"></i>
+                </div>
+                
+                <div class="col-10">
+                    <ng-select2 name="city" [options]="options" 
+                    [(ngModel)]="location" [data]="locationList" [placeholder]="'Select Your Home City'"></ng-select2>
+                </div>
+            </div>
+            <div class="link-box">
+                <a class="a-right" href="#">Already Have an Account? Login</a>
+            </div>
+            <input type="submit" class="btn" (click) = "registerUser()" value="Register">
+        </form>
+    </div>
+    <div class="login-content" *ngIf = "!otpchecked && !otpsent">
+        <form>
+            <h2 class="pb-3 title">Get Started</h2>
+            <div class="input-div one {{nfocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-envelope"></i>
+                </div>
+                <div class="div">
+                    <h5>Email</h5>
+                    <input (focus)="nfocus='focus'" type="text" class="input" [(ngModel)]="emailid" name="Email">
+                </div>
+            </div>
+            <input type="submit" class="btn" (click) = "getOtp()" value="Send OTP">
+        </form>
+    </div>
+    <div class="login-content" *ngIf = "!otpchecked && otpsent">
+        <form>
+            <h2 class="pb-3 title">Get Started</h2>
+            <div class="input-div one {{nfocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa fa-key"></i>
+                </div>
+                <div class="div">
+                    <h5>Enter OTP</h5>
+                    <input (focus)="nfocus='focus'" type="text" class="input" [(ngModel)]="otp" name="OTP">
+                </div>
+            </div>
+            <div class="link-box">
+                <a class="a-right" (click) = "getOtp()">Resend OTP</a>
+            </div>
+            <input type="submit" class="btn" (click) = "verifyOtp()" value="Validate OTP">
+        </form>
+    </div>
+</div>
+
+<div *ngIf="showModal" class="modal--container">
+    <button class="modal--exit" (click)="redirectLogin()"><i class="fa fa-angle-right"></i><i class="fa fa-angle-left"></i></button>
+    <div class="modal--image-container"></div>
+    <div class="modal--contents"><h2>Congratulations!</h2><p>You've come far, tap finish to complete your account creation</p></div>
+    <button class="modal--final-button" (click)="redirectLogin()">Finish</button>
+</div>

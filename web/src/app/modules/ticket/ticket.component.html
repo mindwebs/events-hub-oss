@@ -1,0 +1,21 @@
+<section class="main">
+    <div class="contents">
+
+        <p>Ticket ID : </p>
+        <h1 id="ticket_key">{{ticket_id}}</h1>
+        <h5><strong>Name : </strong>Dipan Roy</h5>
+        <p><strong>Registered at : </strong>2019-01-14 23:58:14 &nbsp;&nbsp;
+            <strong>Ticket Price : </strong>Rs. 300/-</p>
+        <h4 *ngIf="paid" style="color:#1abc9c">Thank You For Confirming Your Payment</h4>
+        <h4 *ngIf="!paid" style="color:crimson">Your Payment is not Confirmed yet.</h4>
+        <img src="http://mindwebs.org/qrCodes/E010837459.png" height="50%" alt="QR Code" title="Show This At the Entry">
+        <!-- NGIF NOT PAID DISPLAY OPTIONS -->
+        <hr />
+        <h5>4 - 5 July 2019, 10:00 Hrs</h5>
+        <h6>IEM Auditorium</h6>
+        <p>Management Building, D-1, Sector V, Salt Lake</p>
+        <span>Please reach the event spot 30 mins prior to the commencement of the Event.</span>
+        <br>
+        <hr>
+    </div>
+</section>

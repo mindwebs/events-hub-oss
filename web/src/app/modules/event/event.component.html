@@ -1,0 +1,94 @@
+<div *ngIf="apicall">
+    <app-loader></app-loader>
+</div>
+<div class="main" *ngIf="!apicall">
+    <div id="image-container" class="image--container" style="{{'background-image: url(' + background_image + ')'}}">
+        <div class="video">
+            <div *ngIf="video"
+                style="position: fixed; transform: scale(1.2); z-index: 1; width: 100%; height: 100%; overflow: hidden;">
+                <iframe frameborder="0" height="100%" width="100%" [src]="video_link">
+                </iframe>
+            </div>
+        </div>
+        <div class="darken"></div>
+        <div class="image--contents">
+            <div class="logo">
+                <h3 class="text text-capitalize">{{ name[0] }}</h3>
+            </div>
+            <h1 class="text-capitalize">{{ name }}</h1>
+            <h3 class="place text-capitalize">{{ location }}</h3>
+            <div class="date--container">
+                <img src="assets/img/calander.png">
+                <div class="date 1">
+                    <h4>{{start_date}}</h4>
+                    <h4>{{start_time}}</h4>
+                </div>
+                <div *ngIf="end_exists" class="colon">
+                    <div></div>
+                </div>
+                <img *ngIf="end_exists" src="assets/img/calander.png">
+                <div *ngIf="end_exists" class="date 2">
+                    <h4>{{end_date}}</h4>
+                    <h4>{{end_time}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contents" class="container contents">
+        <div class="row">
+            <div class="col-lg-9">
+                <div #aboutDiv [class.hide]="text_show">
+                    <div class="row">
+                        <div class="col-6">
+                            <h2 class="text-capitalize">{{ name }}</h2>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-capitalize">{{ location }}
+                                <br />
+                                Rating
+
+                                <span *ngFor="let dummy of ' '.repeat(rating).split(''), let x = index"
+                                    class="fa fa-star checked"></span>
+                                <span *ngFor="let dummy of ' '.repeat(5 - rating).split(''), let x = index"
+                                    class="fa fa-star"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p style="padding-left: 10px;">Hosted by : <span style="font-weight: bolder;"
+                        class="text-capitalize">{{owner}}</span></p>
+                <p><span class="fa fa-quote-left"></span><span
+                        style="font-style: italic; padding-left: 10px;">{{summary}}</span></p>
+                <hr />
+                <div class="description">
+                    <p>{{description}}</p>
+                    <!-- <p>Fetch from CKEDITOR</p> -->
+                </div>
+                <div class="comments">
+                    <hr />
+                    <h3>Comments</h3>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="event-display text-center">
+                    <img [src]="event_image" width="100%" alt="Event Image">
+                    <!-- <h3>INR 300/-</h3> -->
+                    <!-- <span><small>per Ticket</small></span><br /> -->
+                    <button class="btn" (click)="purchase()">PURCHASE</button>
+                    <span style="font-style: italic;">One Person Entry, T&C Applied</span>
+                    <br /><br />
+                    <span>Event ID - E{{ event_id }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Purchase Modal -->
+
+<div *ngIf="showModal" style="z-index: 999 !important;" class="modal--container">
+    <button class="modal--exit" (click)="redirect()"><i class="fa fa-angle-right"></i><i class="fa fa-angle-left"></i></button>
+    <div class="modal--image-container"></div>
+    <div class="modal--contents"><h2>Sorry!</h2><p>You have not uploaded your ID Card, Please upload to complete.</p></div>
+    <button class="modal--final-button" (click)="redirect()">Upload ID Proof</button>
+</div>

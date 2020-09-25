@@ -1,0 +1,93 @@
+<div *ngIf = "apicall">
+    <app-loader></app-loader>
+</div>
+<div class="any" *ngIf = "!apicall">
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Add Ticket Categories</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a [routerLink]="['']">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="['/events']">Events</a></li>
+                    <li class="breadcrumb-item active">Ticket Types</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row main">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 col-12">
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title"><span class="fa fa-cart"></span> Add Ticket Type</h3>
+                    </div>
+                    <form role="form">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="event_name">Event Name</label>
+                                &nbsp;&nbsp;
+                                <select [(ngModel)]="eventObj" name="loc" *ngIf = "!redirect">
+                                    <option *ngFor="let event of eventlist" [ngValue]="event">
+                                      {{event.eventname}}
+                                    </option>
+                                </select>
+                                <input *ngIf = "redirect" type="text" name="name" class="form-control" placeholder="Enter Event" disabled= "true" value = {{eventObj.eventname}}>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Category Name</label>
+                                <input type="text" name="name" class="form-control" [(ngModel)] = "ticket_category" placeholder="Enter Category Name" maxlength=12>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="price">Ticket Price</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-rupee-sign"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" name="price" class="form-control float-right" [(ngModel)] = "ticket_price" placeholder="Ticket Price" 
+                                            mask="separator.2" thousandSeparator=","/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="price">Total Available</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-ticket-alt"></i>
+                                                </span>
+                                            </div>
+                                            <input type="number" max="9999" name="price" class="form-control float-right" [(ngModel)] = "ticket_available" placeholder="Ticket Quantity" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" (click) = "addTicketCategory(0)" class="btn btn-warning">Save</button>
+                            &nbsp;&nbsp;
+                            <button type="submit" (click) = "addTicketCategory(1)" class="btn btn-warning">Save & Add More</button>
+                            &nbsp;&nbsp;
+                            <button type="reset" class="btn btn-danger" (click)="goBack()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>

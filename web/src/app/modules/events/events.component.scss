@@ -1,0 +1,25 @@
+.container {
+    margin-top: 15px;
+    margin-bottom: 80px;
+}
+
+h3 {
+    font-size: 3rem;
+}
+h5 {
+    font-size: 1.2rem;
+}
+
+.card-box {
+    // margin: 5px;
+    margin-bottom: 15px;
+}
+.card p {
+    font-size: 0.7rem;
+    text-align: justify;
+}
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgb(190, 190, 190);
+    transition: all 0.2s ease-in-out;
+}

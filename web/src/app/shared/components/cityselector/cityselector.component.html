@@ -1,0 +1,21 @@
+<div class="wrap">
+    <div class="container">
+        <form class="text-center">
+            <select class="text-capitalize" [(ngModel)]="city_selected" name="city" *ngIf = "dataAvailable" (change)="onChangeReload()">
+                <option value="" selected disabled>Change your Location</option>
+                <option class="text-capitalize" *ngFor="let city of select_cities" [ngValue]="city">
+                  {{city}}
+                </option>
+            </select>
+        </form>
+        <br/>
+        <div class="text-center">
+            <div class="city-block">
+                <div *ngFor="let city of cities" class="cities">
+                    <app-location [location]="city" (click) = "selectCity(city)"></app-location>
+                </div>
+            </div>    
+        </div>
+        
+    </div>
+</div>

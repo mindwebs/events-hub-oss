@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-3 py-2 text-center">
+            <img style="border-radius: 50%;" src="https://acbicon2020.com/uploads/profile/1584716932.jpg">
+            <br />
+            <h2>{{name}}</h2>
+            <h5>{{email}}</h5>
+            <br>
+            <button class="my-2 btn btn-success" (click)="uploadProfilePic()">Upload Profile Picture</button>
+            <br/>
+            <button class="my-2 btn btn-info" (click)="uploadIdProof()">Upload Identity Proof</button>
+            <br/>
+            Download ID Proof
+
+        </div>
+        <div class="col-12 col-lg-9 py-2">
+            <h2 style="font-size: 1.5rem; text-transform: uppercase;" class="text-center">Account Settings</h2>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <p style="font-size: 1.2rem;"><span class="fa fa-cog"></span> Change Password</p>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4 col-12 py-2">
+                                <div class="input">
+                                    <input type="password" name="current" id="current"
+                                        placeholder="Enter Current Password" required class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12 py-2">
+                                <div class="input">
+                                    <input type="password" name="new" id="new" placeholder="Enter New Password"
+                                        required class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12 py-2">
+                                <div class="input">
+                                    <input type="password" name="confirm" id="confirm"
+                                        placeholder="Confirm New Password" required class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9 col-12 py-2">
+                                <span style="vertical-align: middle;">{{message}}</span>
+                            </div>
+                            <div class="col-md-3 col-12 py-2 text-right">
+                                <button class="btn btn-warning" (click)="changePassword()">Change
+                                    Password</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <p style="font-size: 1.2rem;"><span class="fa fa-user"></span> Change Details</p>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4 col-12 py-2">
+                                <div class="input">
+                                    <label for="phone">Update Phone Number</label>
+                                    <input type="text" name="phone" id="phone"
+                                        placeholder="Update Phone Number"  class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12 py-2">
+                                <div class="input">
+                                    <label for="location">Update Location</label>
+                                    <input type="text" name="location" id="location" placeholder="Update Location"
+                                         class="form-control">
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4 col-12 py-2">
+                                <div class="input">
+                                    <input type="password" name="confirm" id="confirm"
+                                        placeholder="Confirm New Password" required class="form-control">
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9 col-12 py-2">
+                                <span style="vertical-align: middle;">{{message2}}</span>
+                            </div>
+                            <div class="col-md-3 col-12 py-2 text-right">
+                                <button class="btn btn-warning" (click)="changeDetails()">Update Details</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

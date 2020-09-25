@@ -1,0 +1,169 @@
+<div *ngIf = "apicall">
+    <app-loader></app-loader>
+</div>
+<div class="any" *ngIf = "!apicall">
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Event Tickets</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a [routerLink]="['']">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Tickets</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row main">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-qrcode"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Events</span>
+                        <span class="info-box-number">
+                            10
+                        </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-mouse-pointer"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Clicks</span>
+                        <span class="info-box-number">41,410</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+
+            <!-- fix for small devices only -->
+            <div class="clearfix hidden-md-up"></div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total Booked</span>
+                        <span class="info-box-number">760</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-rupee-sign"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total Paid</span>
+                        <span class="info-box-number">200</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+        </div>
+
+        <div class="row main">
+            <div class="col-md-12 py-3">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title"><span class="fa fa-ticket"></span> Tickets List</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="dtable">
+                        <table datatable [dtOptions]="dtOptions" class="table row-border hover">
+                            <thead>
+                                <tr>
+                                    <th>Ticket ID</th>
+                                    <th>Name</th>
+                                    <!-- <th>Description</th> -->
+                                    <th>Amount</th>
+                                    <th>Booking Date</th>
+                                    <th>Payment Status</th>
+                                    <th>Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr *ngFor="let loc of locations; let i = index">
+                                    <td>{{ loc.id }}</td>
+                                    <td title="{{ loc.description }}">{{ loc.location }}</td>
+                                    <td><button class="btn btn-sm btn-danger"
+                                            (click)="deleteLocation(i);">Remove</button></td>
+                                </tr> -->
+                                <tr>
+                                    <td>E001A123456</td> <!-- Click to Open Event Page -->
+                                    <td>Dipan Roy</td> <!-- Click to Open the user Profile-->
+                                    <td>INR 300/-</td>
+                                    <td>23-05-2020</td>
+                                    <td>Not Paid</td> <!-- hover to show the payment admin -->
+                                    <td>
+                                        <button class="btn btn-sm btn-success">Paid</button>
+                                        &nbsp;
+                                        <button class="btn btn-sm btn-warning">View</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col">
+                                <label for="none" class="text-uppercase">Filter Options</label>
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-md-3 col-6 py-2">
+                                <ng-select2 name="event_name" [options]="options" (ngModelChange)="eventChange($event)"
+                                    [(ngModel)]="event_name" [data]="events" [placeholder]="'Event'"></ng-select2>
+                            </div>
+                            <div class="col-md-3 col-6 py-2">
+                                <ng-select2 name="type" [disabled]="!event_selected" [options]="options" 
+                                    (ngModelChange)="typeChange($event)" [(ngModel)]="type" 
+                                    [data]="types" [placeholder]="'Ticket Type'"></ng-select2>
+                            </div>
+                            <div class="col-md-3 col-6 py-2">
+                                <select name="payment" id="payment" class="form-control"
+                                (ngModelChange)="payChange($event)" [(ngModel)]="payment" >
+                                    <option selected disabled>Payment Status</option>
+                                    <option value="">Any</option>
+                                    <option value="Paid">Paid</option>
+                                    <option value="Not Paid">Not Paid</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 col-6 py-2">
+                                <button class="btn btn-warning my-2">Update Filters</button>
+                                &nbsp;
+                                <button class="btn btn-danger my-2">Clear Filters</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/. container-fluid -->
+</section>
+</div>

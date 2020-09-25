@@ -1,0 +1,78 @@
+<div *ngIf = "apicall">
+    <app-loader></app-loader>
+</div>
+<div class="main" *ngIf = "!apicall">
+<div class="container">
+    <div class="login-content">
+        <form>
+            <h3 class="py-2 title">Purchase Ticket</h3>
+            <div class="selector">
+                Ticket Type : <ng-select2 name="type" [options]="options" [width]="width" [(ngModel)]="type_selected"
+                    [data]="types" [placeholder]="'Select Ticket Type'"></ng-select2>
+            </div>
+            <br />
+            <div class="form-group mt-2 mb-3">
+                <div class="row">
+                    <div class="col-4" style="text-align: center; vertical-align: middle;">
+                        Ticket Category :
+                    </div>
+                    <div class="col-8">
+                        <select [(ngModel)]="ticketselected" name="city" class="form-control">
+                            <option *ngFor="let category of ticketcategory" [ngValue]="category.id">
+                              {{category.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>                
+            </div>
+            <div class="input-div one {{dfocus}}">
+                <div class="i">
+                    <i class="fa fa-ticket"></i>
+                </div>
+                <div class="div">
+                    <h5>Discount Code (if any)</h5>
+                    <!--
+                    <select [(ngModel)]="dicselected" name="city">
+                        <option *ngFor="let dic of discountcodes" [ngValue]="dic.name">
+                          {{dic.name}}
+                        </option>
+                    </select>
+                    -->
+                    <input (focus)="dfocus='focus'" type="text" name="discount" [(ngModel)]="dicselected"
+                        maxlength=10 class="input">
+                </div>
+            </div>
+
+            <div class="input-div f {{tfocus}}">
+                <div class="i">
+                    <i class="fa fa-ticket"></i>
+                </div>
+                <div class="div">
+                    <h5>Ticket Quantity (Available {{max_tickets}})</h5>
+                    <input (focus)="tfocus='focus'" type="number" name="no_tickets" [(ngModel)]="no_tickets"
+                        [max]="max_tickets" class="input" min=1>
+                </div>
+            </div>
+
+            <div class="input-div one {{afocus}}">
+                <div class="i">
+                    <i class="fa fa-home"></i>
+                </div>
+                <div class="div">
+                    <h5>Your Address</h5>
+                    <input (focus)="afocus='focus'" type="text" name="address" [(ngModel)]="address" class="input">
+                </div>
+            </div>
+            <!-- Gender -->
+            <input type="submit" class="btn" value="Purchase" (click)="purchase()">
+        </form>
+    </div>
+</div>
+
+<div *ngIf="showModal" class="modal--container" (click)="redirectPurchase()">
+    <button class="modal--exit"><i class="fa fa-angle-right"></i><i class="fa fa-angle-left"></i></button>
+    <div class="modal--image-container"></div>
+    <div class="modal--contents"><h2>Congratulations!</h2><p>You've come far, tap finish to complete your ticket purchase</p></div>
+    <button class="modal--final-button" (click)="redirectPurchase()">Finish</button>
+</div>
+</div>

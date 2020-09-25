@@ -1,0 +1,179 @@
+.artboard {
+    width: 100vh;
+    height: 100%;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    }
+
+    .domino > div {
+    border-radius: 8px;
+    display: -webkit-inline-box;
+    display: inline-flex;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    width: 50px;
+    height: 50px;
+    -webkit-animation: domino-effect 2.4s infinite ease-in-out;
+            animation: domino-effect 2.4s infinite ease-in-out;
+    }
+    .domino > div:nth-child(1) {
+    background: #16171b;
+    }
+    .domino > div:nth-child(1):after {
+    background: #16171b;
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+    }
+    .domino > div:nth-child(2) {
+    background: #222c4d;
+    }
+    .domino > div:nth-child(2):after {
+    background: #222c4d;
+    -webkit-animation-delay: 1.2s;
+            animation-delay: 1.2s;
+    }
+    .domino > div:nth-child(3) {
+    background: #2a4291;
+    }
+    .domino > div:nth-child(3):after {
+    background: #2a4291;
+    -webkit-animation-delay: 1.8s;
+            animation-delay: 1.8s;
+    }
+    .domino > div:nth-child(4) {
+    background: #93a2d3;
+    }
+    .domino > div:nth-child(4):after {
+    background: #93a2d3;
+    -webkit-animation-delay: 2.4s;
+            animation-delay: 2.4s;
+    }
+    .domino > div:nth-child(5) {
+    background: #ffa600;
+    }
+    .domino > div:nth-child(5):after {
+    background: #ffa600;
+    -webkit-animation-delay: 3s;
+            animation-delay: 3s;
+    }
+    .domino > div:nth-child(1) {
+    margin: 23px;
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+    }
+    .domino > div:nth-child(2) {
+    margin: 23px;
+    -webkit-animation-delay: 1.2s;
+            animation-delay: 1.2s;
+    }
+    .domino > div:nth-child(3) {
+    margin: 23px;
+    -webkit-animation-delay: 1.8s;
+            animation-delay: 1.8s;
+    }
+    .domino > div:nth-child(4) {
+    margin: 23px;
+    -webkit-animation-delay: 2.4s;
+            animation-delay: 2.4s;
+    }
+    .domino > div:nth-child(5) {
+    margin: 23px;
+    -webkit-animation-delay: 3s;
+            animation-delay: 3s;
+    }
+    .domino > div:after {
+    content: "";
+    position: relative;
+    top: 0px;
+    left: -70px;
+    opacity: 0;
+    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: illusion 2.4s infinite ease-in-out;
+            animation: illusion 2.4s infinite ease-in-out;
+    }
+
+    @-webkit-keyframes beat {
+    to {
+        -webkit-transform: scale(1.4);
+                transform: scale(1.4);
+    }
+    }
+
+    @keyframes beat {
+    to {
+        -webkit-transform: scale(1.4);
+                transform: scale(1.4);
+    }
+    }
+    @-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(140deg);
+                transform: rotate(140deg);
+    }
+    }
+    @keyframes spin {
+    to {
+        -webkit-transform: rotate(140deg);
+                transform: rotate(140deg);
+    }
+    }
+    @-webkit-keyframes domino-effect {
+    20%,100% {
+        -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+    }
+    }
+    @keyframes domino-effect {
+    20%,100% {
+        -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+    }
+    }
+    @-webkit-keyframes illusion {
+    0%, 25% {
+        opacity: 1;
+    }
+    26.10%, 33.33%, 100% {
+        opacity: 0;
+    }
+    }
+    @keyframes illusion {
+    0%, 25% {
+        opacity: 1;
+    }
+    26.10%, 33.33%, 100% {
+        opacity: 0;
+    }
+    }
+
+
+.loader {
+    z-index: 999;
+    position: absolute;
+    display: block;
+    // width: 100% !important;
+    top: 50%;
+    left: 30%;
+    transform: translate(-100%, -100%);
+    // width: 100% !important;
+}
+.wrap {
+    background: rgba($color: #222222, $alpha: 0.5);
+    // height: 100vh;
+    left: 0;
+    right: 0;
+    height: 100%;
+    z-index: 998;
+    position: absolute;
+}

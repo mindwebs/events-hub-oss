@@ -1,0 +1,26 @@
+<img class="wave" src="assets/img/waves/2.png">
+<div class="container">
+    <div class="img">
+        <img src="assets/img/bg.svg">
+    </div>
+    <div class="login-content">
+        <form action="index.html">
+            <h2 class="pb-3 title">Forgot Password</h2>
+
+            <div class="input-div two {{ufocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-envelope"></i>
+                </div>
+                <div class="div">
+                    <h5>Enter Email</h5>
+                    <input (focus)="ufocus='focus'" [(ngModel)] = "emailid" type="email" class="input" name="email">
+                </div>
+            </div>
+
+            <div class="link-box">
+                <a class="a-right" href="#">Already Have an Account? Login</a>
+            </div>
+            <input type="submit" class="btn" (click) = "sendForgotMail()" value="Request Password Reset">
+        </form>
+    </div>
+</div>

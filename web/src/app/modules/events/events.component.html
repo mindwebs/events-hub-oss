@@ -1,0 +1,27 @@
+<div *ngIf = "apicall">
+  <app-loader></app-loader>
+</div>
+<div class="container" *ngIf = "!apicall">
+    <div class="row pt-3 pb-3">
+        <div class="col text-center">
+            <h3 class="text-uppercase">All Events</h3>
+        </div>
+    </div>
+    <div class="row py-3">
+        <div *ngFor="let event of events" class="col-lg-3 col-md-4 col-sm-2 my-3 card-box">
+            <div class="card">
+              <!-- src="assets/img/event_img.jpg" -->
+                <img class="card-img-top" src="{{'data:image/png;base64,' + event.image}}" alt="Event Image">
+                <div class="card-body">
+                  <h5 class="card-title">{{event.name}}</h5>
+                  <p class="card-text">
+                    <span style="font-weight: bold;">{{event.location}}</span>
+                    <br />
+                    {{event.about}}
+                  </p>
+                  <a [routerLink]="event.link" class="btn btn-primary">View More</a>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<img class="wave" src="assets/img/waves/2.png">
+<div class="container">
+    <div class="img">
+        <img src="assets/img/bg.svg">
+    </div>
+    <div class="login-content">
+        <form action="index.html">
+            <h2 class="pb-3 title">Reset Password</h2>
+
+            <div class="input-div three {{pfocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-unlock-alt"></i>
+                </div>
+                <div class="div">
+                    <h5>Set Password</h5>
+                    <input (focus)="pfocus='focus'" type="password" class="input">
+                </div>
+            </div>
+            <div class="input-div four {{cfocus}}">
+                <div class="i">
+                    <i class="fa fa-2x fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>Confirm Password</h5>
+                    <input (focus)="cfocus='focus'" type="password" class="input">
+                </div>
+            </div>
+            <div class="link-box">
+                <a class="a-right" href="#">Already Have an Account? Login</a>
+            </div>
+            <input type="submit" class="btn" value="Set New Password">
+        </form>
+    </div>
+</div>

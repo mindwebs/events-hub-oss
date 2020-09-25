@@ -1,0 +1,94 @@
+.wrap {
+    background-color: rgba(20,20,20,0.5);
+    width: 100%;
+    // height: calc(100% - 58px);
+    top: 0;
+    bottom: 0;
+    overflow: none;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: absolute;
+    display: block;
+    // top: 80;
+    z-index: 10;
+}
+.container{
+    top: 10%;
+    position: relative;
+    min-height: 240px;
+    background-color: white;
+    background: white;
+    z-index: 11 !important;
+    border-radius: 20px;
+    padding-top: 20px;
+}
+
+.hide {
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.city {
+    width: 360px !important;
+}
+.cities {
+    display: inline-block;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+    grid-column: span 1;
+    grid-row: span 1;
+    height:100%;
+    width:100%;
+
+}
+
+.city-block{
+    overflow-x: auto;
+    overflow-y: hidden;
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(8,150px);
+    grid-template-rows: 1fr;
+    margin: 10px 0;
+    padding-bottom: 10px;
+}
+
+@media screen and (max-width:900px){
+    .container{
+        top: 60%;
+        transform: translateY(-40%);
+        // bottom: 0%;
+    }
+}
+
+@media screen and (min-width:901px){
+    /* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: red; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  }
+}

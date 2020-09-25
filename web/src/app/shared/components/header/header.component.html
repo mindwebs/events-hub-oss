@@ -1,0 +1,55 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-custom navbar-dark">
+  <a class="navbar-brand" [routerLink]="['/']">
+    <img src="favicon.ico" width="30" height="30" alt="">
+    Events Hub</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" [class.active]="isActive('/')">
+        <a class="nav-link" [routerLink]="['/']">Home</a>
+      </li>
+      <li class="nav-item" [class.active]="isActive('/events')">
+        <a class="nav-link" [routerLink]="['/events']">Events</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link loc text-capitalize" (click)="toggleCity()">{{city}} 
+          <span *ngIf="!isCityOpen" class="fa fa-angle-down"></span>
+          <span *ngIf="isCityOpen" class="fa fa-angle-up"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/about']" [class.active]="isActive('/about')">About Us</a>
+      </li>
+      <li *ngIf = "!isLoggedIn" class="nav-item">
+        <button [routerLink]="['/login']" class="btn btn-success mr-2 my-sm-0" style="background-color: rgb(201, 0, 0); border-color: rgb(112, 0, 0);">Login</button>
+        <!-- <button *ngIf = "isLoggedIn" [routerLink]="['/login']" (click) = "logout()" class="btn btn-success mr-2 my-sm-0" style="background-color: rgb(201, 0, 0); border-color: rgb(112, 0, 0);">Logout</button> -->
+      </li>
+      <li *ngIf = "isLoggedIn" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Welcome {{username}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/account']">My Account</a>
+          <a class="dropdown-item" [routerLink]="['/tickets']">My Tickets</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['/login']" (click) = "logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">🔍</span>
+        </div>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+      </div>
+    </form>
+  </div>
+</nav>
+<div [class.hide]="!isCityOpen" [class.show]='isCityOpen'>
+  <app-cityselector></app-cityselector>
+</div>

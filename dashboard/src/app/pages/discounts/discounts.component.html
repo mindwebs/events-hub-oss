@@ -1,0 +1,123 @@
+<div *ngIf = "apicall">
+    <app-loader></app-loader>
+</div>
+<div class="any" *ngIf = "!apicall">
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Discount Codes</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a [routerLink]="['']">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Discounts</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row main">
+            <div class="col-md-6 col-12 pb-3">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title"><span class="fa fa-location-arrow"></span> Add New Discount Code</h3>
+                    </div>
+                    <form role="form">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="event_name">Event Name</label>
+                                &nbsp;&nbsp;
+                                <select [(ngModel)]="eventObj" name="loc">
+                                    <option *ngFor="let event of eventlist" [ngValue]="event">
+                                      {{event.eventname}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="code">Discount Code</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-tags"></i>
+                                                </span>
+                                                <input type="text" name="code" id="code"
+                                                    class="form-control float-right" placeholder="Discount Code" [(ngModel)] = "code_name" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="percent">Discount Percentage</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-percent"></i>
+                                                </span>
+                                                <input type="number" name="percent" id="percent" placeholder="Percentage" [(ngModel)] = "code_percent" required class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-success" (click) = "addDiscount()">Activate New Code</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 pb-3">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title"><span class="fa fa-map-pin"></span> Active Codes</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="event_name">Event Name</label>
+                            &nbsp;&nbsp;
+                            <select [(ngModel)]="geteventObj" name="loc">
+                                <option *ngFor="let event of eventlist" [ngValue]="event">
+                                  {{event.eventname}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-success" (click) = "getDiscount()">Show Discount Codes</button>
+                        </div>
+                        <table datatable [dtOptions]="dtOptions" *ngIf="listflag" class="row-border hover">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Percentage</th>
+                                    <th>Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let discount of discountList; let i = index">
+                                    <td>{{ discount.name }}</td>
+                                    <td>{{ discount.value }} %</td>
+                                    <td><button class="btn btn-sm btn-danger" (click)="deleteLocation(i);">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>

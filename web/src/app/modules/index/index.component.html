@@ -1,0 +1,54 @@
+<div *ngIf = "apicall">
+    <app-loader></app-loader>
+</div>
+<div class="main" *ngIf = "!apicall">
+    <div class="carousel--main">
+        <div id="carousel-container" class="carousel--container">
+            <div class="image five"></div>
+            <div class="image one"></div>
+            <div class="image two"></div>
+            <div class="image three"></div>
+            <div class="image four"></div>
+            <div class="image five"></div>
+            <div class="image one"></div>
+        </div>
+        <!-- <div id="buttons-id" class="buttons">
+            <div class="btn1"></div>
+            <div class="btn1"></div>
+            <div class="btn1"></div>
+            <div class="btn1"></div>
+            <div class="btn1"></div>
+        </div> -->
+    </div>
+
+    <div class="container">
+        <div class="row mt-5 mt-1">
+            <div class="col py-1">
+                <h2>Nearby Events</h2>
+            </div>
+        </div>
+
+        <div class="row py-1">
+            <div *ngFor="let event of nearby_events" class="col-lg-3 col-md-4 col-sm-2 my-3 card-box">
+                <div class="card">
+                    <img class="card-img-top" src="{{'data:image/png;base64,' + event.image}}" alt="Event Image">
+                    <div class="card-body">
+                      <h5 class="card-title">{{event.name}}</h5>
+                      <p class="card-text">
+                        <span style="font-weight: bold;">{{event.location}}</span>
+                        <br />
+                        {{event.about}}
+                      </p>
+                      <a [routerLink]="event.link" class="btn btn-primary">View More</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+        <div class="row mt-3 mt-2">
+            <div class="col py-2">
+                <h2>Recently Viewed Events</h2>
+            </div>
+        </div>
+    </div>
+</div>

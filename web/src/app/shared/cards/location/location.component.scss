@@ -1,0 +1,22 @@
+.card{
+    min-width: 64px;
+    max-width: 128px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.card img {
+    min-width: 64px;
+    max-width: 96px;
+    align-self: center;
+    filter: hue-rotate(185deg) saturate(500%);
+}
+
+// .card span {
+//     font-size: 0.5rem;
+// }
+
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgb(189, 189, 189);
+}

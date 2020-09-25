@@ -1,0 +1,26 @@
+.hide {
+    // display: none;
+    transition: opacity 0.05s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    display: none;
+}
+
+.show {
+    // display: block;
+    z-index: 19;
+    // transition: opacity 0.05s ease-in;
+    opacity: 1;
+    height: auto;
+}
+
+.navbar-custom {
+    background-color: rgb(39, 39, 39);
+    box-shadow: 4px -1px 5px black;
+
+}
+
+.loc {
+    cursor: pointer;
+}

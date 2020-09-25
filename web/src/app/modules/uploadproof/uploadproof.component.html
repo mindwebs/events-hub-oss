@@ -1,0 +1,16 @@
+<div class="container">
+    <h2 class="text-center">Submit ID Proof</h2>
+    <br /><br />
+    <div style="margin-top: 60px;" class="login-content image-upload">
+        <form>
+            <div>
+                <div class="div">
+                    <br/>
+                    <input class="image-input" (change)="picked($event,1)" type="file"  accept="image/*">
+                    <img [src]="imgURL" class="image-preview" height="200" *ngIf="imgURL">
+                </div>
+            </div>
+            <input type="submit" class="btn" value="Submit" (click)="addPictures()">
+        </form>
+    </div>
+</div>

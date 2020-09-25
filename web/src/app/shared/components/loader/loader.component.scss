@@ -1,0 +1,70 @@
+svg {
+    overflow: visible;
+    width: 100px;
+    height: 150px;
+    filter:drop-shadow(0px 0px 5px rgba(255, 0, 0, 0.76));
+    transform: rotate(90deg);
+    }
+    svg g {
+    animation: slide 2s linear infinite;
+    }
+    svg g:nth-child(2) {
+    animation-delay: 0.5s;
+    }
+    svg g:nth-child(2) path {
+    animation-delay: 0.5s;
+    stroke-dasharray: 0px 158px;
+    stroke-dashoffset: 1px;
+    }
+    svg path {
+    stroke: url(#gradient);
+    stroke-width: 20px;
+    stroke-linecap: round;
+    fill: none;
+    stroke-dasharray: 0 157px;
+    stroke-dashoffset: 0;
+    animation: escalade 2s cubic-bezier(0.8, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes slide {
+    0% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(50px);
+    }
+    }
+    @keyframes escalade {
+    0% {
+        stroke-dasharray: 0 157px;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 156px 157px;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: 156px 157px;
+        stroke-dashoffset: -156px;
+    }
+    }
+
+.loader {
+    z-index: 999;
+    position: absolute;
+    display: block;
+    // width: 100% !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -50%);
+    // height: 100% !important;
+}
+.wrap {
+    background: rgba($color: #222222, $alpha: 0.5);
+    // height: 100vh;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 998;
+    position: absolute;
+}
