@@ -27,11 +27,9 @@ This project has three layers and folder structured in that way.
 - The backend API stack is located under the api folder.
 
 ## How to Contribute
-Sections of this Project
-This project has three layers and folder structured in that way.
-The admin portal front-end is located under the dashboard folder.
-The user portal front-end is located under web folder.
-The backend API stack is located under the api folder.
+Fork this Repository, Make a Local Instance of MongoDB or create a free atlas account and push that details in /api/config/db.js and create a database Events_Hub under that username in your mongo instance.
+
+You can find the connect URI where you should put the details in username:password@host:port/dbName format.
 
 ## Access the Live Link
 If you wish to test the live application, please write to us at contact@mindwebs.org with the subject heading "Access to Events_Hub Dashboard". Please feed in your complete developer details, so that we can evaluate and give you the access to it. Please don't forget to write the reason of your request of access. If granted, you will be mailed with the email and password to get into the dashboard.
