@@ -14,6 +14,7 @@
 This is an open-source web application that is about an **Event Hosting Platform**, designed to reach a global audience, help you communicate better and increase your network. The application offers a lot of features ranging from hosting and promoting events to booking tickets for the same!
 
 This project is made using Angular, for the frontend & NodeJS-Express for the backend. We have used MongoDB as our database.
+
 Welcoming contributions with :heart:
 
 ## Using the Database for development and testing.
