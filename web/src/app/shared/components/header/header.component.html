@@ -9,18 +9,18 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item" [class.active]="isActive('/')">
+      <li class="nav-item" [class.active]="isActive('/')" data-toggle="collapse" data-target="#navbarSupportedContent">
         <a class="nav-link" [routerLink]="['/']">Home</a>
       </li>
-      <li class="nav-item" [class.active]="isActive('/events')">
+      <li class="nav-item" [class.active]="isActive('/events')" data-toggle="collapse" data-target="#navbarSupportedContent">
         <a class="nav-link" [routerLink]="['/events']">Events</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent">
         <a class="nav-link loc text-capitalize" (click)="toggleCity()">{{city}} 
           <span *ngIf="!isCityOpen" class="fa fa-angle-down"></span>
           <span *ngIf="isCityOpen" class="fa fa-angle-up"></span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent" >
         <a class="nav-link" [routerLink]="['/about']" [class.active]="isActive('/about')">About Us</a>
       </li>
       <li *ngIf = "!isLoggedIn" class="nav-item">
