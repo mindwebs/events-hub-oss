@@ -2,7 +2,7 @@
     <app-loader></app-loader>
 </div>
 <div class="main" *ngIf="!apicall">
-    <div id="image-container" class="image--container" style="{{'background-image: url(' + background_image + ')'}}">
+    <div id="image-container" class="image--container" [style]="'background-image: url(' + background_image + ')'">
         <div class="video">
             <div *ngIf="video"
                 style="position: fixed; transform: scale(1.2); z-index: 1; width: 100%; height: 100%; overflow: hidden;">

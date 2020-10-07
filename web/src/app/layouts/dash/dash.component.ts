@@ -20,7 +20,7 @@ export class DashComponent implements OnInit {
   }
 
   constructor(private titleService: Title) {
-    this.titleService.setTitle('AgroSmart - DashBoard');
+    this.titleService.setTitle('Events Hub - DashBoard');
     this.getScreenSize();
 
     if (this.screenWidth > 760) {
