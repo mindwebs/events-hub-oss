@@ -11,7 +11,7 @@
         <div *ngFor="let event of events" class="col-lg-3 col-md-4 col-sm-2 my-3 card-box">
             <div class="card">
               <!-- src="assets/img/event_img.jpg" -->
-                <img class="card-img-top" src="{{'data:image/png;base64,' + event.image}}" alt="Event Image">
+                <img class="card-img-top" [src]="'data:image/png;base64,' + event.image" alt="Event Image">
                 <div class="card-body">
                   <h5 class="card-title">{{event.name}}</h5>
                   <p class="card-text">
