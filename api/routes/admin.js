@@ -15,17 +15,25 @@ let Register = require('../models/registration.model');
     6. /delete_user         Line 106
     7. /infos               Line 123
 */
+// router.route('/get_location').get((req,res) => {
+//     var locationList = [];
+//     Location.find()
+//         .then(locations => {
+//             locations.map((location) => {
+//                 locationList.push({
+//                     "location": location.location,
+//                     "locationId": location.locationId
+//                 });
+//             })
+//             res.json(locationList);
+//         })
+//         .catch(err => res.status(400).json('Error:' + err));
+// });
+
 router.route('/get_location').get((req,res) => {
-    var locationList = [];
-    Location.find()
+    Location.find().select("locationId location")
         .then(locations => {
-            locations.map((location) => {
-                locationList.push({
-                    "location": location.location,
-                    "locationId": location.locationId
-                });
-            })
-            res.json(locationList);
+            res.json(locations);
         })
         .catch(err => res.status(400).json('Error:' + err));
 });

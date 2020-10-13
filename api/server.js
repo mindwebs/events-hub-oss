@@ -29,12 +29,9 @@ app.use(basicAuth({
 */
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
-    .then()
+    .then(()=>console.log('MongoDB connection established successfully'))
     .catch(err => console.log('Error:' + err));
 const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log('MongoDB connection established successfully');
-})
 
 /*---- Grouped Handlers for various endpoints ----*/
 const usersRouter = require('./routes/user');
