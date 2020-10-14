@@ -4,12 +4,15 @@ let Event = require('../models/events.model');
 
 /*----API Endpoint Handlers----*/
 /*
-    1. /            Line 14
-    2. /id          Line 20
-    3. /location    Line 26
-    4. /add         Line 32
-    5. /edit        Line 66
-    6. /delete      Line 87
+    1. /           
+    2. /id          
+    3. /location    
+    4. /add         
+    5. /edit        
+    6. /delete      
+    7. /onwedBy
+    8. /search
+    9. /today
 */
 router.route('/').get((req,res) => {
     Event.find({status: "active"},'eventId eventName eventSummary ticketPrice eventPic eventStartDate eventEndDate location eventSmallPic')
@@ -95,5 +98,34 @@ router.route('/delete').post((req,res) => {
     .catch(err => res.status(400).json('Error:' + err));
 });
 
+// List of all events owned by a onwer
+router.route('/ownedBy').post((req,res) => {
+    Event.find({eventOwner: req.body.eventOwner})
+        .then(events => res.json(events))
+        .catch(err => res.status(400).json(`Error: ${err}`));
+});
+
+// Search an event by a part of its Name
+router.route('/search').post((req,res) => {
+    Event.find({name: /req.body.name/})
+        .then(events => res.json(events))
+        .catch(err => res.status(400).json(`Error: ${err}`));
+});
+
+// Get all events starting and ending Today
+router.route('/today').post(async (req,res) => {
+    const date = new Date(new Date().toLocaleDateString());
+    const ndate = new Date(new Date().toLocaleDateString());
+    ndate.setDate(ndate.getDate()+1);
+    try{
+        const startingEvents = await Event.find({eventStartDate: {"$gte": date, "$lt": ndate}});
+        const endingEvents = await Event.find({eventEndDate: {"$gte": date, "$lt": ndate}});
+        return res.json({starting: startingEvents, ending: endingEvents});
+    }
+    catch(e){
+        return res.status(400).json(`Error ${e}`);
+    }
+        
+});
 
 module.exports = router;
