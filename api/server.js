@@ -28,9 +28,7 @@ app.use(basicAuth({
     ATLAS_URI=<your uri goes here>
 */
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
-    .then(()=>console.log('MongoDB connection established successfully'))
-    .catch(err => console.log('Error:' + err));
+
 const connection = mongoose.connection;
 
 /*---- Grouped Handlers for various endpoints ----*/
@@ -51,7 +49,13 @@ app.route('/').get((req,res) => {
     res.json("Server started successfully on " + startTime);
 })
 
-/*---- Running the Express Server ----*/
-app.listen(port, () => {
-    console.log('Server is running on port:', port);
-})
+/*---- Running the Express Server after connecting to mongo ----*/
+
+mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
+        .then(()=>{
+            console.log('MongoDB connection established successfully');
+            app.listen(port, () => {
+                console.log('Server is running on port:', port);
+            })
+        })
+        .catch(err => console.log('Error:' + err));
